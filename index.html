@@ -37,7 +37,7 @@
     <p>Serving all schools across Kenya. Pickup or delivery available.</p>
     
     <!-- Booking form -->
-    <form class="booking-form" id="booking-form">
+    <form onsubmit="sendToWhatsApp(); return false;">
       <label>School Name</label>
       <input type="text" placeholder="Type School Name e.g. Alliance High School" id="school" required>
       
@@ -77,6 +77,20 @@
       <div class="tagline">✓ Powered for Madam Monicah | Mombasa Uniform</div>
     </form>
   </section>
-
+<script>
+function sendToWhatsApp() {
+  const school = document.querySelector('input[placeholder*="School"]').value;
+  const item = document.querySelector('select').value;
+  const selects = document.querySelectorAll('select');
+  const size = selects[1].value;
+  const qty = document.querySelector('input[type="number"]').value;
+  const collection = selects[2].value;
+  
+  const text = `*NEW UNIFORM ORDER*%0A%0ASchool: ${school}%0AItem: ${item}%0ASize: ${size}%0AQty: ${qty}%0ACollection: ${collection}%0A%0A*Pay via M-Pesa Till:* 000000%0ASend payment screenshot here`;
+  
+  const phone = "254700000000"; // REPLACE WITH MADAM MONICAH'S NUMBER
+  window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+}
+</script>
 </body>
 </html>
