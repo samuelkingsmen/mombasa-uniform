@@ -97,6 +97,41 @@
     
     <!-- Booking form -->
     <form onsubmit="sendToWhatsApp(); return false;">
+  <div class="booking-form">
+    <label for="school">School Name</label>
+    <input type="text" id="school" placeholder="Type School Name" required>
+    
+    <label for="item">Item</label>
+    <select id="item" required>
+      <option value="">Select Item</option>
+      <option value="Shirt">Shirt</option>
+      <option value="Trouser">Trouser</option>
+      <option value="Sweater">Sweater</option>
+    </select>
+    
+    <label for="size">Size</label>
+    <select id="size" required>
+      <option value="">Select Size</option>
+      <option value="24">24</option>
+      <option value="26">26</option>
+      <option value="28">28</option>
+      <option value="30">30</option>
+      <option value="32">32</option>
+    </select>
+    
+    <label for="quantity">Quantity</label>
+    <input type="number" id="quantity" placeholder="Enter Quantity" min="1" required>
+    
+    <label for="delivery">Collection Method</label>
+    <select id="delivery" required>
+      <option value="">Select Method</option>
+      <option value="Pickup at Shop">Pickup at Shop</option>
+      <option value="Delivery">Delivery</option>
+    </select>
+    
+    <button type="submit">Place Order Now</button>
+  </div>
+</form>
       <label>School Name</label>
       <input type="text" placeholder="Type School Name e.g. Alliance High School" id="school" required>
       
