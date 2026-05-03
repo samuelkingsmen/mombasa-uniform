@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mombasa Uniform Orders | Kenya Wide</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
+    .navbar { background: #002366; color: white; padding: 15px 20px; }
+    .logo { font-size: 20px; font-weight: bold; }
+    .hero { padding: 40px 20px; text-align: center; background: white; }
+    .hero h1 { color: #002366; margin-bottom: 10px; }
+    .hero p { color: #555; margin-bottom: 30px; }
+    .booking-form { max-width: 400px; margin: 0 auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .booking-form input, .booking-form select { 
+      width: 100%; padding: 12px; margin-bottom: 16px; 
+      border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;
+    }
+    .booking-form label { display: block; text-align: left; margin-bottom: 6px; font-weight: bold; color: #333; }
+    .booking-form button { 
+      width: 100%; padding: 14px; background: #002366; color: white; 
+      border: none; border-radius: 8px; font-size: 16px; cursor: pointer;
+    }
+    .booking-form button:hover { background: #001a4d; }
+    .tagline { font-size: 12px; color: #666; text-align: center; margin-top: 15px; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Mombasa Uniform Orders</div>
+  </nav>
+
+  <!-- Hero section -->
+  <section class="hero">
+    <h1>Order School Uniform Online</h1>
+    <p>Serving all schools across Kenya. Pickup or delivery available.</p>
+    
+    <!-- Booking form -->
+    <form class="booking-form" id="booking-form">
+      <label>School Name</label>
+      <input type="text" placeholder="Type School Name e.g. Alliance High School" id="school" required>
+      
+      <label>Item</label>
+      <select id="item" required>
+        <option value="">Select Item</option>
+        <option>Full Uniform Set</option>
+        <option>Shirt</option>
+        <option>Trouser</option>
+        <option>Skirt</option>
+        <option>Sweater</option>
+        <option>P.E Kit</option>
+      </select>
+      
+      <label>Size</label>
+      <select id="size" required>
+        <option value="">Select Size</option>
+        <option>24</option>
+        <option>26</option>
+        <option>28</option>
+        <option>30</option>
+        <option>32</option>
+        <option>34</option>
+      </select>
+      
+      <label>Quantity</label>
+      <input type="number" placeholder="1" id="quantity" min="1" value="1" required>
+      
+      <label>Collection Method</label>
+      <select id="delivery" required>
+        <option value="">Select Option</option>
+        <option>Pickup at Shop</option>
+        <option>Home Delivery</option>
+      </select>
+      
+      <button type="submit">Place Order Now</button>
+      <div class="tagline">✓ Powered for Madam Monicah | Mombasa Uniform</div>
+    </form>
+  </section>
+
+</body>
+</html>
