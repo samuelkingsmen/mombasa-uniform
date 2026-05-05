@@ -2,158 +2,278 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mombasa Uniform Orders | Kenya Wide</title><style>
-  body { 
-    font-family: Arial, sans-serif; 
-    margin: 0; 
-    padding: 0; 
-    background: #f5f5f5; 
-  }
-  .navbar { 
-    background: #002366; 
-    color: white; 
-    padding: 15px 20px; 
-  }
-  .logo { 
-    font-size: 20px; 
-    font-weight: bold; 
-  }
-  .hero { 
-    padding: 40px 20px; 
-    text-align: center; 
-    background: white; 
-  }
-  .hero h1 { 
-    color: #002366; 
-    margin-bottom: 10px; 
-  }
-  .hero p { 
-    color: #555; 
-    margin-bottom: 30px; 
-  }
-  .booking-form { 
-    max-width: 400px; 
-    margin: 0 auto; 
-    background: white; 
-    padding: 20px; 
-    border-radius: 8px;
-  }
-  .booking-form input, 
-  .booking-form select, 
-  .booking-form button {
-    width: 100%; 
-    padding: 12px; 
-    margin-bottom: 16px;
-    border: 1px solid #ccc; 
-    border-radius: 8px; 
-    box-sizing: border-box;
-    display: block;
-  }
-  .booking-form label { 
-    font-weight: bold; 
-    margin-top: 10px; 
-    margin-bottom: 5px;
-    display: block; 
-  }
-  .booking-form button { 
-    background: #002366; 
-    color: white; 
-    border: none; 
-    cursor: pointer;
-    font-size: 16px;
-  }
-   
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
-    .navbar { background: #002366; color: white; padding: 15px 20px; }
-    .logo { font-size: 20px; font-weight: bold; }
-    .hero { padding: 40px 20px; text-align: center; background: white; }
-    .hero h1 { color: #002366; margin-bottom: 10px; }
-    .hero p { color: #555; margin-bottom: 30px; }
-    .booking-form { max-width: 400px; margin: 0 auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .booking-form input, .booking-form select { 
-      width: 100%; padding: 12px; margin-bottom: 16px; 
-      border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mombasa Uniform - Order Form</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 20px;
+      /* BACKGROUND IMAGE - Replace with shop photo when you get it */
+      background: linear-gradient(rgba(230, 247, 255, 0.92), rgba(230, 247, 255, 0.92)),
+                  url('PASTE_SHOP_PHOTO_URL_HERE') center/cover no-repeat fixed;
     }
-    .booking-form label { display: block; text-align: left; margin-bottom: 6px; font-weight: bold; color: #333; }
-    .booking-form button { 
-      width: 100%; padding: 14px; background: #002366; color: white; 
-      border: none; border-radius: 8px; font-size: 16px; cursor: pointer;
+  .promo-banner {
+      background: #ff6b35;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+      font-size: 15px;
+      margin: -20px -20px 20px -20px;
+      animation: pulse 2s infinite;
     }
-    .booking-form button:hover { background: #001a4d; }
-    .tagline { font-size: 12px; color: #666; text-align: center; margin-top: 15px; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
+
+  .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.98);
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      backdrop-filter: blur(4px);
+    }
+  .shop-header { text-align: center; margin-bottom: 20px; }
+  .logo { width: 120px; height: auto; object-fit: contain; display: block; margin: 0 auto 12px auto; }
+    h1 { margin: 0 0 4px 0; font-size: 24px; color: #cc0000; }
+    h3 { margin: 0 0 20px 0; color: #555; font-weight: 400; }
+    label { display: block; margin: 16px 0 6px 0; font-weight: 600; color: #2d3748; }
+    input, select, textarea { width: 100%; padding: 14px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 16px; box-sizing: border-box; }
+    input:focus, select:focus, textarea:focus { border-color: #cc0000; outline: none; }
+    button { width: 100%; padding: 16px; background: #cc0000; color: white; border: none; border-radius: 8px; font-size: 17px; font-weight: bold; margin-top: 24px; cursor: pointer; transition: all 0.2s; }
+    button:hover { background: #990000; transform: translateY(-1px); }
+  .price-display { background: #f0fff4; border: 2px solid #38a169; padding: 16px; border-radius: 8px; text-align: center; margin: 20px 0; font-size: 18px; font-weight: bold; color: #22543d; }
+  .footer { font-size: 12px; text-align: center; margin-top: 20px; color: #777; }
+  .file-input { padding: 10px; background: #f7fafc; }
+  .note { font-size: 13px; color: #666; margin-top: 4px; }
+
+    /* M-Pesa Modal */
+  .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); }
+  .modal-content { background: white; margin: 10% auto; padding: 24px; border-radius: 12px; width: 90%; max-width: 350px; text-align: center; }
+  .mpesa-logo { width: 120px; margin-bottom: 16px; }
+  .till-box { background: #00a651; color: white; padding: 12px; border-radius: 8px; font-size: 20px; font-weight: bold; margin: 12px 0; }
+  .modal-btn { padding: 14px; margin: 8px 0; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; }
+  .confirm-pay { background: #00a651; color: white; }
+  .cancel-pay { background: #e2e8f0; color: #4a5568; }
+  .success-msg { display: none; background: #c6f6d5; color: #22543d; padding: 16px; border-radius: 8px; text-align: center; margin-top: 16px; font-weight: 600; }
+  .sms-link { display: none; background: #3182ce; color: white; padding: 12px; border-radius: 8px; text-align: center; margin-top: 12px; text-decoration: none; font-weight: bold; }
   </style>
 </head>
 <body>
-
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">Mombasa Uniform Orders</div>
-  </nav>
-
-  <!-- Hero section -->
-  <section class="hero">
-    <h1>Order School Uniform Online</h1>
-    <p>Serving all schools across Kenya. Pickup or delivery available.</p>
-    
-    <!-- Booking form -->
-    <form onsubmit="sendToWhatsApp(); return false;">
-  <div class="booking-form">
-    <label for="school">School Name</label>
-    <input type="text" id="school" placeholder="Type School Name" required>
-    
-    <label for="item">Item</label>
-    <select id="item" required>
-  <option value="">Select Item</option>
-  <option value="Full Set">Full Set</option>
-  <option value="Shirt">Shirt</option>
-  <option value="Trouser">Trouser</option>
-  <option value="Sweater">Sweater</option>
-  <option value="Dress">Dress</option>
-  <option value="Sweater">Sweater</option>
-  <option value="P.E kits">P.E kits</option>
-  <option value="Tie">Tie</option>
-  <option value="Socks">Socks</option>
-</select>
-    
-    <label for="size">Size</label>
-    <select id="size" required>
-      <option value="">Select Size</option>
-      <option value="24">24</option>
-      <option value="26">26</option>
-      <option value="28">28</option>
-      <option value="30">30</option>
-      <option value="32">32</option>
-    </select>
-    
-    <label for="quantity">Quantity</label>
-    <input type="number" id="quantity" placeholder="Enter Quantity" min="1" required>
-    
-    <label for="delivery">Collection Method</label>
-    <select id="delivery" required>
-      <option value="">Select Method</option>
-      <option value="Pickup at Shop">Pickup at Shop</option>
-      <option value="Delivery">Delivery</option>
-    </select>
-    
-    <button type="submit">Place Order Now</button>
+  <div class="promo-banner" id="promoBanner">
+    🎒 BACK TO SCHOOL OFFER! 10% OFF Full Sets
   </div>
-      <div class="tagline">✓ Powered for Madam Monicah | Mombasa Uniform</div>
+
+  <div class="container">
+    <div class="shop-header">
+      <!-- MU MOMBASA LIMITED LOGO - Upload the file you sent to a host and paste URL here -->
+      <img src="PASTE_LOGO_URL_HERE" alt="Mombasa Uniform Logo" class="logo">
+      <h1>Mombasa Uniform</h1>
+      <h3>Quality Uniforms & Accessories - We Deliver Countrywide</h3>
+    </div>
+
+    <form id="uniformForm">
+      <label>Parent/Guardian Name</label>
+      <input type="text" id="parentName" placeholder="John Kamau" required>
+
+      <label>Student Name</label>
+      <input type="text" id="studentName" placeholder="Mary Wanjiru" required>
+
+      <label>County</label>
+      <select id="county" required onchange="updateDelivery()">
+        <option value="">Select County</option>
+        <option value="Mombasa" data-fee="300">Mombasa</option>
+        <option value="Kwale" data-fee="500">Kwale</option>
+        <option value="Kilifi" data-fee="500">Kilifi</option>
+        <option value="Nairobi" data-fee="500">Nairobi</option>
+        <option value="Kiambu" data-fee="500">Kiambu</option>
+        <option value="Kisumu" data-fee="500">Kisumu</option>
+        <option value="Nakuru" data-fee="500">Nakuru</option>
+        <option value="Uasin Gishu" data-fee="500">Uasin Gishu - Eldoret</option>
+        <option value="Kakamega" data-fee="500">Kakamega</option>
+        <option value="Machakos" data-fee="500">Machakos</option>
+        <option value="Other" data-fee="500">Other County</option>
+      </select>
+
+      <label>School Name</label>
+      <input type="text" id="schoolName" placeholder="Alliance High School" required>
+      <div class="note">Enter any school in Kenya</div>
+
+      <label>Uniform Item</label>
+      <select id="uniformItem" required onchange="updatePrice()">
+        <option value="">Select Item</option>
+        <option value="Full Uniform Set" data-price="4500">Full Uniform Set - KSh 4,500</option>
+        <option value="Shirt/Blouse Only" data-price="1200">Shirt/Blouse Only - KSh 1,200</option>
+        <option value="Trouser/Skirt Only" data-price="1500">Trouser/Skirt Only - KSh 1,500</option>
+        <option value="Sweater" data-price="1800">Sweater - KSh 1,800</option>
+        <option value="P.E Kit" data-price="2000">P.E Kit - KSh 2,000</option>
+        <option value="Hijab - School Color" data-price="500">Hijab - KSh 500</option>
+        <option value="Blazer" data-price="3500">Blazer - KSh 3,500</option>
+      </select>
+
+      <label>Size</label>
+      <select id="uniformSize" required>
+        <option value="">Select Size</option>
+        <option value="Size 22">Size 22</option>
+        <option value="Size 24">Size 24</option>
+        <option value="Size 26">Size 26</option>
+        <option value="Size 28">Size 28</option>
+        <option value="Size 30">Size 30</option>
+        <option value="Size 32">Size 32</option>
+        <option value="Size 34">Size 34</option>
+        <option value="Small - Adult">Small - Adult</option>
+        <option value="Medium - Adult">Medium - Adult</option>
+        <option value="Large - Adult">Large - Adult</option>
+        <option value="XL - Adult">XL - Adult</option>
+      </select>
+
+      <label>Quantity</label>
+      <input type="number" id="quantity" placeholder="1" min="1" value="1" required onchange="updatePrice()">
+
+      <label>Upload Measurements Photo (Optional)</label>
+      <input type="file" id="measurementPhoto" accept="image/*" class="file-input">
+      <div class="note">Take photo of student or sketch with measurements</div>
+
+      <label>Special Instructions (Optional)</label>
+      <textarea id="instructions" rows="2" placeholder="e.g. Long sleeves, extra hem..."></textarea>
+
+      <label>Delivery Option</label>
+      <select id="deliveryOption" required onchange="updatePrice()">
+        <option value="">Select Delivery</option>
+        <option value="Pickup at Shop" data-extra="0">Pickup at Shop - FREE</option>
+        <option value="Send via Courier" data-extra="1">Send via Courier/Parcel</option>
+      </select>
+      <div class="note">Courier fee calculated based on county</div>
+
+      <label>Your Phone Number</label>
+      <input type="tel" id="customerPhone" placeholder="0722xxxxxx" required>
+
+      <div class="price-display" id="priceDisplay">
+        Total: KSh 0
+      </div>
+
+      <button type="button" onclick="showMpesaModal()">Place Order & Pay</button>
+      <div class="success-msg" id="successMsg">✅ Order Confirmed & Paid! Mombasa Uniform will contact you when ready.</div>
+      <a href="#" id="smsLink" class="sms-link" target="_blank">📱 Send "Ready for Pickup" SMS</a>
     </form>
-  </section>
-<script>
-function sendToWhatsApp() {
-  const school = document.querySelector('input[placeholder*="School"]').value;
-  const item = document.querySelector('select').value;
-  const selects = document.querySelectorAll('select');
-  const size = selects[1].value;
-  const qty = document.querySelector('input[type="number"]').value;
-  const collection = selects[2].value;
-  
-  const text = `*NEW UNIFORM ORDER*%0A%0ASchool: ${school}%0AItem: ${item}%0ASize: ${size}%0AQty: ${qty}%0ACollection: ${collection}%0A%0A*Pay via M-Pesa Till:* 000000%0ASend payment screenshot here`;
-  
-  const phone = "254726821720"; // REPLACE WITH MADAM MONICAH'S NUMBER
-  window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
-}
-</script>
+
+    <p class="footer">Powered by Samuel Solutions | 07xx xxx xxx</p>
+  </div>
+
+  <!-- M-Pesa Payment Modal -->
+  <div id="mpesaModal" class="modal">
+    <div class="modal-content">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/M-PESA_LOGO-01.svg" class="mpesa-logo" alt="M-Pesa">
+      <h3>Pay with M-Pesa</h3>
+      <p>Go to M-Pesa on your phone:</p>
+      <div class="till-box">Till: 123456</div>
+      <p><strong>Amount: <span id="modalAmount">KSh 0</span></strong></p>
+      <p style="font-size:13px; color:#666;">
+        1. Lipa na M-Pesa > Buy Goods<br>
+        2. Enter Till Number<br>
+        3. Enter Amount<br>
+        4. Enter M-Pesa PIN
+      </p>
+      <button class="modal-btn confirm-pay" onclick="confirmPayment()">I Have Paid - Confirm Order</button>
+      <button class="modal-btn cancel-pay" onclick="closeMpesaModal()">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    // CHANGE THESE: Shop owner details
+    const SHOP_NUMBER = '2547xxxxxxxx';
+    const TILL_NUMBER = '123456';
+
+    let totalAmount = 0;
+    let lastOrderData = {};
+
+    // Rotate promo banner text
+    const promos = [
+      "🎒 BACK TO SCHOOL OFFER! 10% OFF Full Sets",
+      "✂️ FREE Alterations This Month",
+      "🚚 COUNTRYWIDE DELIVERY AVAILABLE"
+    ];
+    let promoIndex = 0;
+    setInterval(() => {
+      promoIndex = (promoIndex + 1) % promos.length;
+      document.getElementById('promoBanner').textContent = promos[promoIndex];
+    }, 4000);
+
+    function updateDelivery() {
+      updatePrice();
+    }
+
+    function updatePrice() {
+      const item = document.getElementById('uniformItem');
+      const qty = parseInt(document.getElementById('quantity').value) || 1;
+      const county = document.getElementById('county');
+      const delivery = document.getElementById('deliveryOption');
+
+      const itemPrice = parseInt(item.options[item.selectedIndex]?.dataset.price) || 0;
+      const countyFee = parseInt(county.options[county.selectedIndex]?.dataset.fee) || 0;
+
+      let deliveryFee = 0;
+      if (delivery.value === "Send via Courier") {
+        deliveryFee = countyFee;
+      }
+
+      totalAmount = (itemPrice * qty) + deliveryFee;
+      document.getElementById('priceDisplay').innerHTML = `Total: KSh ${totalAmount.toLocaleString()}`;
+    }
+
+    function showMpesaModal() {
+      if (!document.getElementById('uniformForm').checkValidity()) {
+        document.getElementById('uniformForm').reportValidity();
+        return;
+      }
+      if (totalAmount === 0) {
+        alert('Please select an item first');
+        return;
+      }
+      document.getElementById('modalAmount').textContent = `KSh ${totalAmount.toLocaleString()}`;
+      document.getElementById('mpesaModal').style.display = 'block';
+    }
+
+    function closeMpesaModal() {
+      document.getElementById('mpesaModal').style.display = 'none';
+    }
+
+    function confirmPayment() {
+      const parent = document.getElementById('parentName').value.trim();
+      const student = document.getElementById('studentName').value.trim();
+      const county = document.getElementById('county').value;
+      const school = document.getElementById('schoolName').value.trim();
+      const item = document.getElementById('uniformItem').value;
+      const size = document.getElementById('uniformSize').value;
+      const qty = document.getElementById('quantity').value;
+      const delivery = document.getElementById('deliveryOption').value;
+      const phone = document.getElementById('customerPhone').value.trim();
+      const instructions = document.getElementById('instructions').value.trim();
+      const photo = document.getElementById('measurementPhoto').files[0];
+
+      let photoNote = photo? "\n📸 *Photo uploaded:* Yes" : "";
+      let instructionNote = instructions? `\n📝 *Note:* ${instructions}` : "";
+
+      lastOrderData = { parent, student, phone };
+
+      const message = `*NEW ORDER - PAID ✅*\n\n👤 *Parent:* ${parent}\n🎓 *Student:* ${student}\n🏫 *School:* ${school}\n📍 *County:* ${county}\n📦 *Item:* ${item}\n📏 *Size:* ${size}\n🔢 *Qty:* ${qty}\n💰 *Total Paid:* KSh ${totalAmount.toLocaleString()}\n🚚 *Delivery:* ${delivery}\n📞 *Contact:* ${phone}${instructionNote}${photoNote}\n\n*Payment:* M-Pesa Till ${TILL_NUMBER}\n\n_Sent via Samuel Solutions_`;
+
+      const whatsappURL = `https://wa.me/${SHOP_NUMBER}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappURL, '_blank');
+
+      // SMS for shop owner to send
+      const smsMsg = `Hello ${parent}, ${student}'s uniform from Mombasa Uniform is ready for pickup. Thank you! - Samuel Solutions`;
+      const smsURL = `sms:${phone}?body=${encodeURIComponent(smsMsg)}`;
+      document.getElementById('smsLink').href = smsURL;
+      document.getElementById('smsLink').style.display = 'block';
+
+      closeMpesaModal();
+      document.getElementById('successMsg').style.display = 'block';
+      document.getElementById('uniformForm').reset();
+      document.getElementById('quantity').value = 1;
+      updatePrice();
+    }
+  </script>
 </body>
 </html>
